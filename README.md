@@ -54,7 +54,7 @@ TBD
 
 * An [IBM Cloud Account](https://console.bluemix.net)
 
-* An account on [IBM Data Science Experience] (https://datascience.ibm.com).
+* An account on [IBM Data Science Experience](https://datascience.ibm.com).
 
 * A space in IBM Cloud US South or United Kingdom regions.
 
