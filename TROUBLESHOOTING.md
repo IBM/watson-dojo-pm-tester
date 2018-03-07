@@ -6,9 +6,9 @@ After creating the Watson Machine Learning Service Instance, it should create a 
 
 ![ML Error][1]
 
-As a workaround, go to your IBM Cloud Dashboard, click the Watson Machine Learning service. Click "Service credentials".
+As a workaround, go to your IBM Cloud Dashboard, click the Watson Machine Learning service. Click `Service credentials`.
 
-Click the "New credential" button. give it a name or use the autopopulated one and click add. Expand "View credentials" and take note of your user name and password. You will need to enter this into DSX in Step 6.
+Click the `New credential` button. give it a name or use the autopopulated one and click add. Expand `View credentials` and take note of your user name and password. You will need to enter this into DSX in Step 6.
 
 
-[1]: images/ml-error.png?raw=true
+[1]: /doc/source/images/ml-error.png?raw=true
