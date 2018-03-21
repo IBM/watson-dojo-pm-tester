@@ -123,15 +123,9 @@ Use Ctrl-click on the Deploy to `IBM Cloud` button below to open the deployment 
 
 ### 4. Create a project in IBM Watson Studio and bind it to your Watson Machine Learning service instance
 
-* In a new browser tab go to [https://datascience.ibm.com](https://datascience.ibm.com).
+* Sign up for IBM's [Watson Studio](https://dataplatform.ibm.com). By creating a project in Watson Studio a free tier ``Object Storage`` service will be created in your IBM Cloud account. Take note of your service names as you will need to select them in the following steps.
 
-* Click on `Sign In` at the top of the page.
-
-* From the dashboard, click on `New Project` from the dashboard.
-
-  ![](doc/source/images/new-project.png?raw=true)
-
-* Watson Studio projects depend on two services: Object Storage, and a Compute Engine.  If you don't already have Object Storage or a Compute Engine, you can create a new instance of each service while defining a new project.  The _New Project_ panel is easy to use, either select an existing service on the right, or create a new one.  In the example below services need to be created.
+> Note: When creating your Object Storage service, select the ``Free`` storage type in order to avoid having to pay an upgrade fee.
 
   ![](doc/source/images/create-services.png?raw=true)
 
@@ -187,17 +181,17 @@ Use Ctrl-click on the Deploy to `IBM Cloud` button below to open the deployment 
 
 ### 6. Create a notebook in IBM Watson Studio
 
-* If you don't have your newly created Project open, first click `Projects` -> `View All Projects`, and then select your newly created project from Step 4. Next, in the Watson Studio browser tab click on `Overview` and then click `add notebooks`.
-
-  ![](doc/source/images/add-notebook.png?raw=true)
-
-* Click on `From URL` and name the notebook _Apache Spark integration with Watson ML_.
-
+* In [Watson Studio](https://dataplatform.ibm.com), click on `Create notebook` to create a notebook.
+* Create a project if necessary, provisioning an object storage service if required.
+* In the `Assets` tab, select the `Create notebook` option.
+* Select the `From URL` tab.
+* Enter a name for the notebook.
+* Optionally, enter a description for the notebook.
 * Under `Notebook URL` provide the following url: https://github.com/IBM/predictive-model-on-watson-ml/blob/master/demo1.ipynb
+* Select the free Anaconda runtime.
+* Click the `Create` button.
 
   ![](doc/source/images/create-notebook.png?raw=true)
-
-* Click `Create Notebook` to create the new notebook.
 
 ### 7. Run the notebook in IBM Watson Studio
 
