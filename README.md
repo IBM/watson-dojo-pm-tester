@@ -1,6 +1,8 @@
 DISCLAIMER: This application is used for demonstrative and illustrative purposes only and does not constitute an offering that has gone through regulatory review.
 
-#  Create and deploy a scoring model to predict heart failure on IBM Cloud with the Watson Data Platform
+# Create and deploy a scoring model to predict heart failure on IBM Cloud with the Watson Data Platform
+
+> Data Science Experience is now Watson Studio. Although some images in this code pattern may show the service as Data Science Experience, the steps and processes will still work.
 
 In this Code Pattern, we will use a Jupyter Notebook on IBM Watson Studio to build a predictive model that demonstrates a potential health care use case.
 This a customized version of the Node.js sample app that is available with the [Watson Machine Learning Service on IBM Cloud](http://www.ng.bluemix.net/docs/#services/PredictiveModeling/index.html).
@@ -34,8 +36,10 @@ When the reader has completed this Code Pattern, they will understand how to:
 * [Data Science](https://medium.com/ibm-data-science-experience/): Systems and scientific methods to analyze structured and unstructured data in order to extract knowledge and insights.
 * [Node.js](https://nodejs.org/): An open-source JavaScript run-time environment for executing server-side JavaScript code.
 
+<!--
 # Watch the Video
 TBD
+-->
 
 # Steps
 
@@ -54,7 +58,7 @@ TBD
 
 * An [IBM Cloud Account](https://console.bluemix.net)
 
-* An account on [IBM Watson Studio](https://datascience.ibm.com).
+* An account on [IBM Watson Studio](https://dataplatform.ibm.com).
 
 * A space in IBM Cloud US South or United Kingdom regions.
 
@@ -70,8 +74,7 @@ Use Ctrl-click on the Deploy to `IBM Cloud` button below to open the deployment 
 
 * Click on `Deploy` to deploy the application.
 
-  ![](doc/source/images/pipeline.png?raw=true
-)
+  ![](doc/source/images/pipeline.png?raw=true)
 
 * A Toolchain and Delivery Pipeline will be created for you to pull the app out of Github and deploy it in to IBM Cloud. Click on the Delivery Pipeline tile to see the status of the deployment.
 
@@ -85,7 +88,7 @@ Use Ctrl-click on the Deploy to `IBM Cloud` button below to open the deployment 
 
 * In your browser go to the [IBM Cloud Dashboard](https://console.bluemix.net/dashboard/apps) and click `Catalog`.
 
-* In the navigation menu at the left, select `Data  & Analytics` (under `Platform`) and then select `Machine Learning`.
+* Search for `Machine Learning`.
 
   ![](doc/source/images/create-ml-instance.png?raw=true)
 
@@ -111,7 +114,7 @@ Use Ctrl-click on the Deploy to `IBM Cloud` button below to open the deployment 
 
 * In your browser go to the IBM Cloud Dashboard and click `Catalog`.
 
-* In the navigation menu at the left, select `Data  & Analytics` (under `Platform`) and then select `Watson Studio`.
+* Search for `Watson Studio`.
 
   ![](doc/source/images/dsx-service.png?raw=true)
 
@@ -291,20 +294,13 @@ This data is collected from the `package.json` file in the sample application an
 
 To disable tracking, simply remove ``require("cf-deployment-tracker-client").track();`` from the ``app.js`` file in the top level directory.
 
-# Links
-
-* More data science journeys on IBM Code: [https://developer.ibm.com/code/journey/category/data-science/](https://developer.ibm.com/code/journey/category/data-science/)
-* IBM Watson Studio: [https://www.ibm.com/analytics/us/en/watson-data-platform/data-science-experience/](https://www.ibm.com/analytics/us/en/watson-data-platform/data-science-experience/)
-* Watson Data Platform: [https://www.ibm.com/analytics/us/en/watson-data-platform/](https://www.ibm.com/analytics/us/en/watson-data-platform/)
-
 # Learn more
-
 
 * **Artificial Intelligence Code Patterns**: Enjoyed this Code Pattern? Check out our other [AI Code Patterns](https://developer.ibm.com/code/technologies/artificial-intelligence/).
 * **Data Analytics Code Patterns**: Enjoyed this Code Pattern? Check out our other [Data Analytics Code Patterns](https://developer.ibm.com/code/technologies/data-science/)
 * **AI and Data Code Pattern Playlist**: Bookmark our [playlist](https://www.youtube.com/playlist?list=PLzUbsvIyrNfknNewObx5N7uGZ5FKH0Fde) with all of our Code Pattern videos
 * **With Watson**: Want to take your Watson app to the next level? Looking to utilize Watson Brand assets? [Join the With Watson program](https://www.ibm.com/watson/with-watson/) to leverage exclusive brand, marketing, and tech resources to amplify and accelerate your Watson embedded commercial solution.
-* **Watson Studio**: Master the art of data science with IBM's [Watson Studio](https://datascience.ibm.com/)
+* **Watson Studio**: Master the art of data science with IBM's [Watson Studio](https://dataplatform.ibm.com/)
 * **Spark on IBM Cloud**: Need a Spark cluster? Create up to 30 Spark executors on IBM Cloud with our [Spark service](https://console.bluemix.net/catalog/services/apache-spark)
 
 # License
