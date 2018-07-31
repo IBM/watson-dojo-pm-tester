@@ -91,7 +91,7 @@ Use Ctrl-click on the Deploy to `IBM Cloud` button below to open the deployment 
 
   ![](doc/source/images/connect-to.png)
 
-* Click `Restage` when you’re prompted to restage your application. The app will take a couple of minutes to be back in the `running` state.
+* Click `Connect and restage app` when you’re prompted to restage your application. The app will take a couple of minutes to be back in the `running` state.
 
 ### 3. Create a project in IBM Watson Studio and bind it to your Watson Machine Learning service instance
 
@@ -118,9 +118,11 @@ Use Ctrl-click on the Deploy to `IBM Cloud` button below to open the deployment 
 
   ![](https://raw.githubusercontent.com/IBM/pattern-images/master/watson-studio/data-assets.png)
 
-* Click on the `Settings` tab for the project, scroll down to `Associated services` and click `+ Add service` ->  `Machine Learning`.
+* Click on the `Settings` tab for the project, scroll down to `Associated services` and click `+ Add service` ->  `Watson`.
 
-  ![](https://raw.githubusercontent.com/IBM/pattern-images/master/watson-studio/add-service-ML.png)
+  ![](doc/source/images/add-service-ML.png)
+
+* Click `Add` on the Machine Learning learning tile
 
 * Choose your existing Machine Learning instance and click on `Select`.
 
