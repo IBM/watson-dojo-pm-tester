@@ -53,8 +53,6 @@ TBD
 1. [Deploy the saved predictive model as a scoring service using the web ui](#7-deploy-the-saved-predictive-model-as-a-scoring-service-using-the-web-ui)
 1. [Deploy the saved predictive model using APIs](#8-deploy-the-saved-predictive-model-using-apis)
 
-
-
 ## Prerequisites
 
 * An [IBM Cloud Account](https://console.bluemix.net)
@@ -157,7 +155,7 @@ Use Ctrl-click on the Deploy to `IBM Cloud` button below to open the deployment 
 * Enter a name for the notebook.
 * Optionally, enter a description for the notebook.
 * Under `Notebook URL` provide the following url: https://github.com/IBM/predictive-model-on-watson-ml/blob/master/demo1.ipynb
-* Select the Spark runtime.
+* Select the Spark runtime with Python 3.5 .
 * Click the `Create` button.
 
   ![](doc/source/images/create-spark-notebook.png)
