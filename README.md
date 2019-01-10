@@ -115,7 +115,7 @@ Use Ctrl-click on the Deploy to `IBM Cloud` button below to open the deployment 
 
   ![](https://raw.githubusercontent.com/IBM/pattern-images/master/watson-studio/data-assets.png)
 
-* The Watson Machine Learning service is now listed as one of your `Associated Services`.
+* Click on the `Settings` tab for the project, scroll down to `Associated services` section.
 * Click `+ Add service -> Watson`.
 * Click the `Add` link on the `Machine Learning` tile.
 * Choose your existing Machine Learning instance and click on `Select`.
