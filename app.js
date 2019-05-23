@@ -55,7 +55,7 @@ if (credentials != null) {
 				user: credentials.username,
 				password: credentials.password
 			},
-			json:true
+			json: true
 		};
 		request(options, function(err, res, body) {
 			if (err) {
@@ -70,7 +70,7 @@ if (credentials != null) {
 			   headers: {
 				  Authorization: 'Bearer ' + token
 			   },
-			   json:true
+			   json: true
 			}
 			request(opts, function(err, res, body) {
 			   if (err) {

@@ -8,7 +8,7 @@ This code pattern can be thought of as two distinct parts:
 
 2. A Node.js web app that allows a user to input some data to be scored against the previous model.
 
-When the reader has completed this Code Pattern, they will understand how to:
+In this Code Pattern, we will build a simple web app that allows a user to input some data to be scored against a model. The model will be built using Spark within a Jupyter Notebook on IBM Watson Studio. The model is then deployed to the Watson Machine Learning service, where it can be accessed via a REST API. When the reader has completed this Code Pattern, they will understand how to:
 
 * Build a predictive model within a Jupyter Notebook on Watson Studio
 * Deploy the model to the IBM Watson Machine Learning service
