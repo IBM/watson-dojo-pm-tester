@@ -1,6 +1,6 @@
 ---
 applications:
-- name: watson-ml-tester
-  command: node app.js
+- name: watson-ml-score
+  command: ng serve
   instances: 1
   memory: 128M

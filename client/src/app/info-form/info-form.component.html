@@ -1,0 +1,168 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1 class="text-center">IBM Watson Machine Learning Example <small>By the IBM Developer Advocacy team</small></h1><br>
+    <form (ngSubmit)="onSubmit()" #infoForm="ngForm">
+
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="text" class="form-control" id="age"
+                required
+                [(ngModel)]="model.age" name="age"
+                #age="ngModel">
+        <div [hidden]="age.valid || age.pristine" class="alert alert-danger">
+          Age is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select class="form-control" id="gender"
+                required
+                [(ngModel)]="model.gender" name="gender"
+                #gender="ngModel">
+          <option *ngFor="let gen of genders" [value]="gen">{{gen}}</option>
+        </select>
+        <div [hidden]="gender.valid || gender.pristine" class="alert alert-danger">
+          Gender is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="familyhistory">Family History</label>
+        <select class="form-control" id="familyhistory"
+                required
+                [(ngModel)]="model.familyhistory" name="familyhistory"
+                #familyhistory="ngModel">
+          <option *ngFor="let fh of histories" [value]="fh">{{fh}}</option>
+        </select>
+        <div [hidden]="familyhistory.valid || familyhistory.pristine" class="alert alert-danger">
+          Family History is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="smoker">Smoker in the last 5 years?</label>
+        <select class="form-control" id="smoker"
+                required
+                [(ngModel)]="model.smoker" name="smoker"
+                #smoker="ngModel">
+          <option *ngFor="let s of smokers" [value]="s">{{s}}</option>
+        </select>
+        <div [hidden]="smoker.valid || smoker.pristine" class="alert alert-danger">
+          Smoker history is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exercise">Exercise (minutes per week)</label>
+        <input type="text" class="form-control" id="exercise"
+                required
+                [(ngModel)]="model.exercise" name="exercise"
+                #exercise="ngModel">
+        <div [hidden]="exercise.valid || exercise.pristine" class="alert alert-danger">
+          Exercise is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="cholesterol">Cholesterol</label>
+        <input type="text" class="form-control" id="cholesterol"
+                required
+                [(ngModel)]="model.cholesterol" name="cholesterol"
+                #cholesterol="ngModel">
+        <div [hidden]="cholesterol.valid || cholesterol.pristine" class="alert alert-danger">
+          Cholesterol is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="bmi">Body Mass Index (BMI)</label>
+        <input type="text" class="form-control" id="bmi"
+                required
+                [(ngModel)]="model.bmi" name="bmi"
+                #bmi="ngModel">
+        <div [hidden]="bmi.valid || bmi.pristine" class="alert alert-danger">
+          BMI is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="heartbeats">Heartbeats (average per minute)</label>
+        <input type="text" class="form-control" id="heartbeats"
+                required
+                [(ngModel)]="model.heartbeats" name="heartbeats"
+                #heartbeats="ngModel">
+        <div [hidden]="heartbeats.valid || heartbeats.pristine" class="alert alert-danger">
+          Heartbeats is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="palpitations">Palpitations (number per day)</label>
+        <input type="text" class="form-control" id="palpitations"
+                required
+                [(ngModel)]="model.palpitations" name="palpitations"
+                #palpitations="ngModel">
+        <div [hidden]="palpitations.valid || palpitations.pristine" class="alert alert-danger">
+          Palpitations is required
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="button" class="btn btn-default" (click)="newInfo()">Reset</button>
+
+    </form>
+  </div>
+
+  <div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">Age</div>
+      <div class="col-xs-9">{{ model.age }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Gender</div>
+      <div class="col-xs-9">{{ model.gender }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Family History</div>
+      <div class="col-xs-9">{{ model.familyhistory }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Smoker</div>
+      <div class="col-xs-9">{{ model.smoker }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Exercise</div>
+      <div class="col-xs-9">{{ model.exercise }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Cholesterol</div>
+      <div class="col-xs-9">{{ model.cholesterol }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">BMI</div>
+      <div class="col-xs-9">{{ model.bmi }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Heartbeats</div>
+      <div class="col-xs-9">{{ model.heartbeats }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Palpitations</div>
+      <div class="col-xs-9">{{ model.palpitations }}</div>
+    </div>
+    <br>
+    <h2>Result of scoring the data with the model:</h2>
+    <div class="row">
+      <div class="col-xs-3">Employee Attrition</div>
+      <div class="col-xs-9">{{ attrition }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Model Confidence</div>
+      <div class="col-xs-9">{{ confidence }}</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+  </div>
+</div>
