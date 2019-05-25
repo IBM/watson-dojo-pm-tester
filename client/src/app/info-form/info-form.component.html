@@ -133,50 +133,50 @@
   <div [hidden]="!submitted">
     <h2>You submitted the following:</h2>
     <div class="row">
-      <div class="col-xs-3">Age</div>
-      <div class="col-xs-9">{{ model.age }}</div>
+      <div class="col-xs-4">Age</div>
+      <div class="col-xs-5">{{ model.age }}</div>
     </div>
     <div class="row">
-      <div class="col-xs-3">Gender</div>
-      <div class="col-xs-9">{{ model.gender }}</div>
+      <div class="col-xs-4">Gender</div>
+      <div class="col-xs-5">{{ model.gender }}</div>
     </div>
     <div class="row">
-      <div class="col-xs-3">Family History</div>
-      <div class="col-xs-9">{{ model.familyhistory }}</div>
+      <div class="col-xs-4">Family History</div>
+      <div class="col-xs-5">{{ model.familyhistory }}</div>
     </div>
     <div class="row">
-      <div class="col-xs-3">Smoker</div>
-      <div class="col-xs-9">{{ model.smoker }}</div>
+      <div class="col-xs-4">Smoker</div>
+      <div class="col-xs-5">{{ model.smoker }}</div>
     </div>
     <div class="row">
-      <div class="col-xs-3">Exercise</div>
-      <div class="col-xs-9">{{ model.exercise }}</div>
+      <div class="col-xs-4">Exercise</div>
+      <div class="col-xs-5">{{ model.exercise }}</div>
     </div>
     <div class="row">
-      <div class="col-xs-3">Cholesterol</div>
-      <div class="col-xs-9">{{ model.cholesterol }}</div>
+      <div class="col-xs-4">Cholesterol</div>
+      <div class="col-xs-5">{{ model.cholesterol }}</div>
     </div>
     <div class="row">
-      <div class="col-xs-3">BMI</div>
-      <div class="col-xs-9">{{ model.bmi }}</div>
+      <div class="col-xs-4">BMI</div>
+      <div class="col-xs-5">{{ model.bmi }}</div>
     </div>
     <div class="row">
-      <div class="col-xs-3">Heartbeats</div>
-      <div class="col-xs-9">{{ model.heartbeats }}</div>
+      <div class="col-xs-4">Heartbeats</div>
+      <div class="col-xs-5">{{ model.heartbeats }}</div>
     </div>
     <div class="row">
-      <div class="col-xs-3">Palpitations</div>
-      <div class="col-xs-9">{{ model.palpitations }}</div>
+      <div class="col-xs-4">Palpitations</div>
+      <div class="col-xs-5">{{ model.palpitations }}</div>
     </div>
     <br>
     <h2>Result of scoring the data with the model:</h2>
     <div class="row">
-      <div class="col-xs-3">Employee Attrition</div>
-      <div class="col-xs-9">{{ attrition }}</div>
+      <div class="col-xs-4">Candidate for heart disease</div>
+      <div class="col-xs-5">{{ predictionLabel }}</div>
     </div>
     <div class="row">
-      <div class="col-xs-3">Model Confidence</div>
-      <div class="col-xs-9">{{ confidence }}</div>
+      <div class="col-xs-4">Model Confidence</div>
+      <div class="col-xs-5">{{ confidence }}%</div>
     </div>
     <br>
     <button class="btn btn-primary" (click)="submitted=false">Edit</button>

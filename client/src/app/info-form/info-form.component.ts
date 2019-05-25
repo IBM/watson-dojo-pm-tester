@@ -32,8 +32,8 @@ export class InfoFormComponent {
   genders = ['M', 'F'];
   histories = ['Y', 'N'];
   smokers = ['Y', 'N'];
-  confidence = 0.0;
-  attrition = 0.0;
+  confidence = 0;
+  predictionLabel = ''
 
   // used to make the hidden div show up
   submitted = false;
@@ -61,8 +61,10 @@ export class InfoFormComponent {
           (scoreResponse) => {
             console.log('/score API return below:');
             console.log(scoreResponse);
-            this.confidence = scoreResponse['values'][0][11];
-            this.attrition = scoreResponse['values'][0][13];
+            let confidencePercent = scoreResponse['values'][0][16][0] * 100;
+            console.log(confidencePercent)
+            this.confidence = Number.parseFloat(confidencePercent).toFixed(2);
+            this.predictionLabel = scoreResponse['values'][0][18];
           }
         );
 
