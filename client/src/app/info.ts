@@ -11,5 +11,4 @@ export class Info {
         public heartbeats: number,
         public palpitations: number
     ) {  }
-
 }

@@ -1,0 +1,8 @@
+{
+  "/v3/*": {
+    "target": "https://us-south.ml.cloud.ibm.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}
