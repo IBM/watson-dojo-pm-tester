@@ -61,9 +61,7 @@ export class InfoFormComponent {
           (scoreResponse) => {
             console.log('/score API return below:');
             console.log(scoreResponse);
-            let confidencePercent = scoreResponse['values'][0][16][0] * 100;
-            console.log(confidencePercent)
-            this.confidence = Number.parseFloat(confidencePercent).toFixed(2);
+            this.confidence = scoreResponse['values'][0][16][0] * 100;
             this.predictionLabel = scoreResponse['values'][0][18];
           }
         );

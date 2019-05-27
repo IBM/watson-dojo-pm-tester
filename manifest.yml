@@ -1,6 +1,9 @@
 ---
 applications:
 - name: watson-ml-score
-  command: ng serve
+  path: ./client/dist/
+  command: npm run start
   instances: 1
   memory: 128M
+  random-route: true
+  buildpack: sdk-for-nodejs
