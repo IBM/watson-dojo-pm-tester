@@ -22,7 +22,7 @@ Here's an example of what the final web app looks like
 
 And it's result
 
-![result](doc/source/images/output-result.png)
+![result](doc/source/images/failure-no.png)
 
 ## Architecture
 
