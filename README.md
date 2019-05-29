@@ -121,16 +121,16 @@ The notebook we'll be using can be viewed in [`notebooks/predictiveModel.ipynb`]
 
 * From the new project `Overview` panel, click `+ Add to project` on the top right and choose the `Notebook` asset type. Fill in the following information:
 
-   1. Select the `From URL` tab.
-   2. Enter a `Name` for the notebook and optionally a description.
-   3. Under `Notebook URL` provide the following url: [https://github.com/IBM/predictive-model-on-watson-ml/blob/master/notebooks/predictiveModel.ipynb](https://github.com/IBM/predictive-model-on-watson-ml/blob/master/notebooks/predictiveModel.ipynb)
-   4. For `Runtime` select the `Spark Python 3.6` option.
+  * 1: Select the `From URL` tab.
+  * 2: Enter a `Name` for the notebook and optionally a description.
+  * 3: Under `Notebook URL` provide the following url: [https://github.com/IBM/predictive-model-on-watson-ml/blob/master/notebooks/predictiveModel.ipynb](https://github.com/IBM/predictive-model-on-watson-ml/blob/master/notebooks/predictiveModel.ipynb)
+  * 4: For `Runtime` select the `Spark Python 3.6` option.
 
-   ![add notebook](doc/source/images/create-spark-notebook.png)
+  ![add notebook](doc/source/images/create-spark-notebook.png)
 
 * **TIP:** Once successfully imported, the notebook should appear in the `Notebooks` section of the `Assets` tab.
 
-   ![notebook asset](doc/source/images/notebook-asset.png)
+  ![notebook asset](doc/source/images/notebook-asset.png)
 
 ### 2. Create and deploy a predictive model with Watson Studio
 
@@ -146,9 +146,9 @@ Now that we're in our Notebook editor, we can start to create our predictive mod
 
   ![stop on this cell](doc/source/images/insert-point.png)
 
-  1. Click on the `Data` icon.
-  2. Select the `Insert to code` option under the file **patientdataV6.csv**.
-  3. Choose the `Insert SparkSession Data Frame` option.
+  * 1. Click on the `Data` icon.
+  * 2. Select the `Insert to code` option under the file **patientdataV6.csv**.
+  * 3. Choose the `Insert SparkSession Data Frame` option.
 
   ![add spark dataframe](doc/source/images/insert-spark-dataframe.png)
 
