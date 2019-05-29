@@ -91,7 +91,12 @@ The data used in this example was generated using a normal distribution. Attribu
 
    ![add asset](doc/source/images/add-assets-data.png)
 
-* A panel on the right of the screen will appear. From the `Load` tab click on the `browse` option. From your machine, browse to the location of the [`patientdataV6.csv`](data/patientdataV6.csv) file in this repository, and upload it.
+* A panel on the right of the screen will appear to assit you in uploading data. Follow the numbered steps in the image below.
+
+  * Ensure you're on the `Load` tab. [1]
+  * Click on the `browse` option. From your machine, browse to the location of the [`patientdataV6.csv`](data/patientdataV6.csv) file in this repository, and upload it. [not numbered]
+  * Once uploaded, go to the `Files` tab. [2]
+  * Ensure the `patientdataV6.csv` appears. [3]
 
    ![add patient data](doc/source/images/add-patient-data.png)
 
@@ -121,10 +126,10 @@ The notebook we'll be using can be viewed in [`notebooks/predictiveModel.ipynb`]
 
 * From the new project `Overview` panel, click `+ Add to project` on the top right and choose the `Notebook` asset type. Fill in the following information:
 
-  * 1: Select the `From URL` tab.
-  * 2: Enter a `Name` for the notebook and optionally a description.
-  * 3: Under `Notebook URL` provide the following url: [https://github.com/IBM/predictive-model-on-watson-ml/blob/master/notebooks/predictiveModel.ipynb](https://github.com/IBM/predictive-model-on-watson-ml/blob/master/notebooks/predictiveModel.ipynb)
-  * 4: For `Runtime` select the `Spark Python 3.6` option.
+  * Select the `From URL` tab. [1]
+  * Enter a `Name` for the notebook and optionally a description. [2]
+  * Under `Notebook URL` provide the following url: [https://github.com/IBM/predictive-model-on-watson-ml/blob/master/notebooks/predictiveModel.ipynb](https://github.com/IBM/predictive-model-on-watson-ml/blob/master/notebooks/predictiveModel.ipynb) [3]
+  * For `Runtime` select the `Spark Python 3.6` option. [4]
 
   ![add notebook](doc/source/images/create-spark-notebook.png)
 
@@ -146,16 +151,16 @@ Now that we're in our Notebook editor, we can start to create our predictive mod
 
   ![stop on this cell](doc/source/images/insert-point.png)
 
-  * 1. Click on the `Data` icon.
-  * 2. Select the `Insert to code` option under the file **patientdataV6.csv**.
-  * 3. Choose the `Insert SparkSession Data Frame` option.
+  * Click on the `Data` icon. [1]
+  * Select the `Insert to code` option under the file **patientdataV6.csv**. [2]
+  * Choose the `Insert SparkSession Data Frame` option. [3]
 
   ![add spark dataframe](doc/source/images/insert-spark-dataframe.png)
 
 * The above step will have inserted a chunk of code into your notebook. We need to make two changes:
 
-   1. Rename the `df_data_1` variable to `df_data`.
-   2. Re-add the line `.option('inferSchema','True')\` to the `spark.read()` call.
+  * Rename the `df_data_1` variable to `df_data`. [1]
+  * Re-add the line `.option('inferSchema','True')\` to the `spark.read()` call. [2]
 
   ![modify automatic code](doc/source/images/spark-data-frame.png)
 
