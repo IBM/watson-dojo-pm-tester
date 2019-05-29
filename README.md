@@ -6,7 +6,7 @@ This code pattern can be thought of as two distinct parts:
 
 1. A predictive model will be built using Spark within a Jupyter Notebook on IBM Watson Studio. The model is then deployed to the Watson Machine Learning service, where it can be accessed via a REST API.
 
-2. A Node.js web apps that allows a user to input some data to be scored against the previous model.
+2. A Node.js web app that allows a user to input some data to be scored against the previous model.
 
 When the reader has completed this Code Pattern, they will understand how to:
 
@@ -54,18 +54,18 @@ And it's result
 ## Steps
 
 1. [Setup project and data in Watson Studio](#1-setup-project-and-data-in-watson-studio)
-   1. [Create a project in Watson Studio](#11-create-a-project-in-watson-studio)
-   1. [Add patient data as an asset](#12-add-patient-data-as-an-asset)
-   1. [Provision a Watson Machine Learning service](#13-provision-a-watson-machine-learning-service)
-   1. [Create a notebook in Watson Studio](#14-create-a-notebook-in-watson-studio)
+   * [Create a project in Watson Studio](#11-create-a-project-in-watson-studio)
+   * [Add patient data as an asset](#12-add-patient-data-as-an-asset)
+   * [Provision a Watson Machine Learning service](#13-provision-a-watson-machine-learning-service)
+   * [Create a notebook in Watson Studio](#14-create-a-notebook-in-watson-studio)
 1. [Create and deploy a predictive model with Watson Studio](#2-create-and-deploy-a-predictive-model-with-watson-studio)
-   1. [Start stepping through the notebook](#21-start-stepping-through-the-notebook)
-   1. [Save the model](#22-save-the-model)
-   1. [Deploy the model](#23-deploy-the-model)
+   * [Start stepping through the notebook](#21-start-stepping-through-the-notebook)
+   * [Save the model](#22-save-the-model)
+   * [Deploy the model](#23-deploy-the-model)
 1. [The client side](#3-the-client-side)
-   1. [Deploy the web app](#31-deploy-the-web-app)
-   1. [Bind the app with the existing Maching Learning service](#32-bind-the-app-with-the-existing-maching-learning-service)
-   1. [Interacting with the web app](#33-interacting-with-the-web-app)
+   * [Deploy the web app](#31-deploy-the-web-app)
+   * [Bind the app with the existing Maching Learning service](#32-bind-the-app-with-the-existing-maching-learning-service)
+   * [Interacting with the web app](#33-interacting-with-the-web-app)
 
 ### 1. Setup project and data in Watson Studio
 
