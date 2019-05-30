@@ -53,7 +53,7 @@ if (credentials != null) {
 			}
 			request(opts, function(err, res, body) {
 			   if (err) {
-			      console.log('Error  from GET to retrieve scoring href ' + err);
+			      console.log('Error from GET to retrieve scoring href ' + err);
 				  return;
 			   }
 
@@ -65,12 +65,9 @@ if (credentials != null) {
 					   console.log('Found Heart Failure Deployment Model');
 					   break;
 					 }
-					 else {
-
-					 }
 			   }
 			   if (!scoringHref) {
-				   console.log('Error: Did not find  Heart Failure Deployment Model');
+				   console.log('Error: Did not find Heart Failure Deployment Model');
 			   }
 			});
 		});
