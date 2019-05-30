@@ -23,7 +23,7 @@ if (services['pm-20']) {
    service = services['pm-20'][0];
 }
 var credentials = service.credentials;
-if (credentials != null) {	   
+if (credentials != null) {
 		env.baseURL = credentials.url;
 		env.accessKey = credentials.access_key;
 		env.instance_id = credentials.instance_id;
@@ -41,13 +41,13 @@ if (credentials != null) {
 				console.log('Error  from GET to retrieve token ' + err);
 				return;
 			}
-			
+
 			token = body.token;
 			var opts = {
 			   url: env.baseURL + '/v3/wml_instances/' + env.instance_id + '/deployments',
 			   method: 'GET',
 			   headers: {
-				  Authorization: 'Bearer ' + token				  
+				  Authorization: 'Bearer ' + token
 			   },
 			   json:true
 			}
@@ -56,7 +56,7 @@ if (credentials != null) {
 			      console.log('Error  from GET to retrieve scoring href ' + err);
 				  return;
 			   }
-			   
+
 			   for (i = 0; i < body.resources.length; i++) {
 				   if (body.resources[i].entity.published_model.name == 'Heart Failure Prediction Model') {
 					   scoringHref = body.resources[i].entity.scoring_url;
@@ -64,17 +64,20 @@ if (credentials != null) {
 					   env.deployment_id = body.resources[i].metadata.guid;
 					   console.log('Found Heart Failure Deployment Model');
 					   break;
-				   }
+					 }
+					 else {
+
+					 }
 			   }
 			   if (!scoringHref) {
 				   console.log('Error: Did not find  Heart Failure Deployment Model');
 			   }
 			});
 		});
-		
+
 }
 
-// Only  URL paths prefixed by /score will be handled by our router 
+// Only  URL paths prefixed by /score will be handled by our router
 var rootPath = '/score';
 
 // ROUTES FOR OUR API
@@ -98,14 +101,14 @@ router.get('/', function(req, res) {
 });
 
 // score request
-// Calls the PM Service instance 
+// Calls the PM Service instance
 router.post('/', function(req, res) {
-	
+
 	if (!token || !scoringHref) {
 		res.status(503).send('Service unavailable');
 		return;
 	}
-	
+
 console.log('=== SCORE ===');
 console.log('  URI  : ' + scoringHref);
 console.log('  Input: ' + JSON.stringify(req.body.input));
@@ -115,21 +118,21 @@ console.log(' ');
 			url: scoringHref,
 			method: "POST",
 			headers: {
-			   Authorization: 'Bearer ' + token				  
+			   Authorization: 'Bearer ' + token
 			},
 			// The following query parameters are not used when scoring against a WML Model
 			//qs: { instance_id: env.instance_id, deployment_id: env.deployment_id, published_model_id: env.published_model_id },
 			json: req.body.input
 		};
 		request(opts, function(err, r, body) {
-			if (err) {			   	
+			if (err) {
 			   res.status(500).send(err);
 			}
 			else {
-				console.log('Reply from scoring ' + body);				
+				console.log('Reply from scoring ' + body);
                 res.json(body);
 			}
-				
+
 		});
 
 	} catch (e) {
@@ -146,12 +149,12 @@ console.log(' ');
 			message: msg
 		}));
 	}
-	
+
 	process.on('uncaughtException', function (err) {
     console.log(err);
-	}); 
+	});
 });
-        
+
 // Register Service routes and SPA route ---------------
 
 // all of our service routes will be prefixed with rootPath
