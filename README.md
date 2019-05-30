@@ -220,11 +220,11 @@ You can deploy this application as a Cloud Foundry application to IBM Cloud by s
 
 #### 3.2 Bind the app with the existing Maching Learning service
 
-* From the application's overview page, select the `Connections` option from the left menu panel. This will allow us to associate our Watson Machine Learning service with the application. Click on the `Create Connection` button and select the Watson Machine Learning service you provisioned earlier.
+* From the application's overview page, select the `Connections` option from the left menu panel. This will allow us to associate our Watson Machine Learning service with the application. Find the Watson Machine Learning service (likely prefixed with `pm-20`), click the `Connect` button, and choose the default options for the IAM generated credentials. and select the Watson Machine Learning service you provisioned earlier.
 
   ![connect app](doc/source/images/connect-to.png)
 
-* Click the `Connect and restage app` when you’re prompted to restage your application. The app will take a couple of minutes to come back online.
+* When prompted to restage your application click the `Restage` button. The app will take a couple of minutes to come back online. Refresh any web pages that have the app running.
 
 > *Why do this?* The application is expecting information about the Maching Learning service via environment variables. By associating the application with the service, details about the service, such as the deployment id, and other sensitive information are accessible through environment variables.
 
