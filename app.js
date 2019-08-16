@@ -39,6 +39,7 @@ var env = { baseURL: '', accessKey: '' };
 var token = null;
 var scoringHref = null;
 var services = JSON.parse(process.env.VCAP_SERVICES || "{}");
+console.log(services)
 var service = {};
 if (services['pm-20']) {
    service = services['pm-20'][0];
@@ -50,10 +51,34 @@ if (credentials != null) {
 		env.instance_id = credentials.instance_id;
 		var options = {
 			url: env.baseURL + '/v3/identity/token',
-			method: 'GET',
+			headers: [
+				{
+				  name: 'content-type',
+				  value: 'application/x-www-form-urlencoded'
+				},
+				{
+				  name: 'accept',
+				  value: 'application/json'
+				}
+			  ],
+			method: 'POST',
+			postData: {
+				mimeType: 'application/x-www-form-urlencoded',
+				params: [
+				  {
+					name: 'apikey',
+					value: credentials.access_key
+				  },
+				  {
+					name: 'grant_type',
+					value: 'urn:ibm:params:oauth:grant-type:apikey'
+				  }
+				]
+			},
 			auth: {
-				user: credentials.username,
-				password: credentials.password
+				//for some reason these are what you pass in :shrug:
+				user: 'bx',
+				password: 'bx'
 			},
 			json:true
 		};

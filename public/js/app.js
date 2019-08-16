@@ -90,7 +90,7 @@ var	ResultsCtrl = ['$scope',	'$modalInstance',	'rspHeader', 'rspData', function 
 	   formattedData.push('No');
 
    // Format confidence
-    if (rspData.values[0][16] == 1)  // CONFIDENCE
+    if (rspData.values[0][17] == 1)  // CONFIDENCE
        confidence = (rspData.values[0][16][1] * 100).toFixed(2) + '%';
     else
 	   confidence = (rspData.values[0][16][0] * 100).toFixed(2) + '%';
