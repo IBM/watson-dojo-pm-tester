@@ -25,6 +25,8 @@ var path        = require('path');
 var bodyParser 	= require('body-parser');
 var express    	= require('express');
 var request 	= require('request');
+var btoa        = require('btoa');
+
 
 var app        	= express(); // define our app using express
 
@@ -50,41 +52,17 @@ if (credentials != null) {
 		env.accessKey = credentials.access_key;
 		env.instance_id = credentials.instance_id;
 		var options = {
-			url: env.baseURL + '/v3/identity/token',
-			headers: [
-				{
-				  name: 'content-type',
-				  value: 'application/x-www-form-urlencoded'
-				},
-				{
-				  name: 'accept',
-				  value: 'application/json'
-				}
-			  ],
-			method: 'POST',
-			postData: {
-				mimeType: 'application/x-www-form-urlencoded',
-				params: [
-				  {
-					name: 'apikey',
-					value: credentials.access_key
-				  },
-				  {
-					name: 'grant_type',
-					value: 'urn:ibm:params:oauth:grant-type:apikey'
-				  }
-				]
-			},
-			auth: {
-				//for some reason these are what you pass in :shrug:
-				user: 'bx',
-				password: 'bx'
-			},
-			json:true
+            url: env.baseURL + '/v3/identity/token',
+            headers: { "Content-Type"  : "application/x-www-form-urlencoded",
+                       "Authorization" : "Basic " + btoa('bx:bx')
+                     },
+            body: "apikey=" + credentials.access_key + "&grant_type=urn:ibm:params:oauth:grant-type:apikey",
+            method: 'POST',
+            json: true
 		};
 		request(options, function(err, res, body) {
 			if (err) {
-				console.log('Error  from GET to retrieve token ' + err);
+				console.log('Error from GET to retrieve token ' + err);
 				return;
 			}
 
