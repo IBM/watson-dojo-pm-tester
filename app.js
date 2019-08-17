@@ -78,8 +78,9 @@ if (credentials != null) {
 				console.log('Error from GET to retrieve token ' + err);
 				return;
 			}
-
-			token = body.token;
+			console.log('logging response body')
+			console.log(body)
+			token = body.access_token;
 			var opts = {
 			   url: env.baseURL + '/v3/wml_instances/' + env.instance_id + '/deployments',
 			   method: 'GET',
