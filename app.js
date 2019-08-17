@@ -37,7 +37,7 @@ var port = (process.env.PORT || 3000);
 // VCAP_SERVICES contains all the credentials of services bound to
 // this application. For details of its content, please refer to
 // the document or sample of each service.
-var env = { baseURL: '', accessKey: '' };
+var env = { baseURL: '', apikey: '' };
 var token = null;
 var scoringHref = null;
 var services = JSON.parse(process.env.VCAP_SERVICES || "{}");
@@ -47,18 +47,31 @@ if (services['pm-20']) {
    service = services['pm-20'][0];
 }
 var credentials = service.credentials;
+
+/* the credentials are of the form ...
+	"credentials": {
+		"apikey": "xxx",
+		"iam_apikey_description": "Auto-generated for binding 123",
+		"iam_apikey_name": "pm-20-dsx",
+		"iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+		"iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/123::serviceid:ServiceId-123",
+		"instance_id": "123",
+		"url": "https://us-south.ml.cloud.ibm.com"
+	},
+*/
+
+
 if (credentials != null) {
 		env.baseURL = credentials.url;
-		env.accessKey = credentials.access_key;
+		env.apikey = credentials.apikey;
 		env.instance_id = credentials.instance_id;
 		var options = {
-            url: env.baseURL + '/v3/identity/token',
-            headers: { "Content-Type"  : "application/x-www-form-urlencoded",
-                       "Authorization" : "Basic " + btoa('bx:bx')
-                     },
-            body: "apikey=" + credentials.access_key + "&grant_type=urn:ibm:params:oauth:grant-type:apikey",
-            method: 'POST',
-            json: true
+			url: env.baseURL + '/v3/identity/token',
+			headers: { "Content-Type"  : "application/x-www-form-urlencoded",
+						"Authorization" : "Basic " + btoa('bx:bx') },
+			body: "apikey=" + credentials.access_key + "&grant_type=urn:ibm:params:oauth:grant-type:apikey",
+			method: 'POST',
+			json: true
 		};
 		request(options, function(err, res, body) {
 			if (err) {
