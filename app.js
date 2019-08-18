@@ -41,6 +41,7 @@ var env = { baseURL: '', apikey: '' };
 var token = null;
 var global_response = null;
 var global_body = null;
+var global_err = null;
 var scoringHref = null;
 var services = JSON.parse(process.env.VCAP_SERVICES || "{}");
 var service = {};
@@ -70,20 +71,17 @@ if (credentials != null) {
 			url: env.baseURL + '/v3/identity/token',
 			headers: { "Content-Type"  : "application/x-www-form-urlencoded",
 						"Authorization" : "Basic " + btoa('bx:bx') },
-			body: "apikey=" + credentials.access_key + "&grant_type=urn:ibm:params:oauth:grant-type:apikey",
+			body: "apikey=" + credentials.apikey + "&grant_type=urn:ibm:params:oauth:grant-type:apikey",
 			method: 'POST'
 		};
 		request(options, function(err, res, body) {
+			global_error = err;
+			global_response = res;
+			global_body = body;
 			if (err) {
 				console.log('Error from GET to retrieve token ' + err);
 				return;
 			}
-			global_response = res;
-			global_body = body;
-			console.log('body is');
-			console.log(body);
-			console.log('res is');
-			console.log(res);
 			token = body.access_token;
 			var opts = {
 			   url: env.baseURL + '/v3/wml_instances/' + env.instance_id + '/deployments',
@@ -147,6 +145,7 @@ router.post('/', function(req, res) {
 		console.log("debugging");
 		console.log(global_response);
 		console.log(global_body);
+		console.log(global_err);
 		res.status(503).send('Service unavailable' + global_body + " " + global_response);
 		return;
 	}
