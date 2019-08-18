@@ -41,7 +41,6 @@ var env = { baseURL: '', apikey: '' };
 var token = null;
 var scoringHref = null;
 var services = JSON.parse(process.env.VCAP_SERVICES || "{}");
-console.log(services)
 var service = {};
 if (services['pm-20']) {
    service = services['pm-20'][0];
@@ -70,16 +69,17 @@ if (credentials != null) {
 			headers: { "Content-Type"  : "application/x-www-form-urlencoded",
 						"Authorization" : "Basic " + btoa('bx:bx') },
 			body: "apikey=" + credentials.access_key + "&grant_type=urn:ibm:params:oauth:grant-type:apikey",
-			method: 'POST',
-			json: true
+			method: 'POST'
 		};
 		request(options, function(err, res, body) {
 			if (err) {
 				console.log('Error from GET to retrieve token ' + err);
 				return;
 			}
-			console.log('logging response body')
+			console.log('body is')
 			console.log(body)
+			console.log('res is')
+			console.log(res)
 			token = body.access_token;
 			var opts = {
 			   url: env.baseURL + '/v3/wml_instances/' + env.instance_id + '/deployments',
@@ -87,7 +87,7 @@ if (credentials != null) {
 			   headers: {
 				  Authorization: 'Bearer ' + token
 			   },
-			   json:true
+			   json: true
 			}
 			request(opts, function(err, res, body) {
 			   if (err) {
