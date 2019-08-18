@@ -39,6 +39,8 @@ var port = (process.env.PORT || 3000);
 // the document or sample of each service.
 var env = { baseURL: '', apikey: '' };
 var token = null;
+var global_response = null;
+var global_body = null;
 var scoringHref = null;
 var services = JSON.parse(process.env.VCAP_SERVICES || "{}");
 var service = {};
@@ -76,10 +78,12 @@ if (credentials != null) {
 				console.log('Error from GET to retrieve token ' + err);
 				return;
 			}
-			console.log('body is')
-			console.log(body)
-			console.log('res is')
-			console.log(res)
+			global_response = res;
+			global_body = body;
+			console.log('body is');
+			console.log(body);
+			console.log('res is');
+			console.log(res);
 			token = body.access_token;
 			var opts = {
 			   url: env.baseURL + '/v3/wml_instances/' + env.instance_id + '/deployments',
@@ -140,7 +144,10 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
 
 	if (!token || !scoringHref) {
-		res.status(503).send('Service unavailable');
+		console.log("debugging");
+		console.log(global_response);
+		console.log(global_body);
+		res.status(503).send('Service unavailable' + global_body + " " + global_response);
 		return;
 	}
 
