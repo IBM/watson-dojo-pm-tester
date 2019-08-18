@@ -39,9 +39,6 @@ var port = (process.env.PORT || 3000);
 // the document or sample of each service.
 var env = { baseURL: '', apikey: '' };
 var token = null;
-var global_response = null;
-var global_body = null;
-var global_err = null;
 var scoringHref = null;
 var services = JSON.parse(process.env.VCAP_SERVICES || "{}");
 var service = {};
@@ -64,54 +61,51 @@ var credentials = service.credentials;
 
 
 if (credentials != null) {
-		env.baseURL = credentials.url;
-		env.apikey = credentials.apikey;
-		env.instance_id = credentials.instance_id;
-		var options = {
-			url: env.baseURL + '/v3/identity/token',
-			headers: { "Content-Type"  : "application/x-www-form-urlencoded",
-						"Authorization" : "Basic " + btoa('bx:bx') },
-			body: "apikey=" + credentials.apikey + "&grant_type=urn:ibm:params:oauth:grant-type:apikey",
-			method: 'POST'
-		};
-		request(options, function(err, res, body) {
-			global_error = err;
-			global_response = res;
-			global_body = body;
+	// use env.baseURL for calling WML APIs only. Do not use it for IAM auth. Use (https://iam.cloud.ibm.com) for IAM auth instead.
+	env.baseURL = credentials.url;
+	env.apikey = credentials.apikey;
+	env.instance_id = credentials.instance_id;
+	var options = {
+		url: 'https://iam.cloud.ibm.com/identity/token',
+		headers: { "Content-Type"  : "application/x-www-form-urlencoded",
+					"Authorization" : "Basic " + btoa('bx:bx') },
+		body: "apikey=" + credentials.apikey + "&grant_type=urn:ibm:params:oauth:grant-type:apikey",
+		method: 'POST'
+	};
+	request(options, function(err, res, body) {
+		if (err) {
+			console.log('Error from GET to retrieve token ' + err);
+			return;
+		}
+		token = JSON.parse(body)['access_token'];
+		var opts = {
+			url: env.baseURL + '/v3/wml_instances/' + env.instance_id + '/deployments',
+			method: 'GET',
+			headers: {
+				Authorization: 'Bearer ' + token
+			},
+			json: true
+		}
+		request(opts, function(err, res, body) {
 			if (err) {
-				console.log('Error from GET to retrieve token ' + err);
+				console.log('Error from GET to retrieve scoring href ' + err);
 				return;
 			}
-			token = body.access_token;
-			var opts = {
-			   url: env.baseURL + '/v3/wml_instances/' + env.instance_id + '/deployments',
-			   method: 'GET',
-			   headers: {
-				  Authorization: 'Bearer ' + token
-			   },
-			   json: true
+
+			for (i = 0; i < body.resources.length; i++) {
+				if (body.resources[i].entity.published_model.name == 'Heart Failure Prediction Model') {
+					scoringHref = body.resources[i].entity.scoring_url;
+					env.published_model_id = body.resources[i].entity.published_model.guid;
+					env.deployment_id = body.resources[i].metadata.guid;
+					console.log('Found Heart Failure Deployment Model');
+					break;
+					}
 			}
-			request(opts, function(err, res, body) {
-			   if (err) {
-			      console.log('Error from GET to retrieve scoring href ' + err);
-				  return;
-			   }
-
-			   for (i = 0; i < body.resources.length; i++) {
-				   if (body.resources[i].entity.published_model.name == 'Heart Failure Prediction Model') {
-					   scoringHref = body.resources[i].entity.scoring_url;
-					   env.published_model_id = body.resources[i].entity.published_model.guid;
-					   env.deployment_id = body.resources[i].metadata.guid;
-					   console.log('Found Heart Failure Deployment Model');
-					   break;
-					 }
-			   }
-			   if (!scoringHref) {
-				   console.log('Error: Did not find Heart Failure Deployment Model');
-			   }
-			});
+			if (!scoringHref) {
+				console.log('Error: Did not find Heart Failure Deployment Model');
+			}
 		});
-
+	});
 }
 
 // Only  URL paths prefixed by /score will be handled by our router
@@ -142,11 +136,7 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
 
 	if (!token || !scoringHref) {
-		console.log("debugging");
-		console.log(global_response);
-		console.log(global_body);
-		console.log(global_err);
-		res.status(503).send('Service unavailable' + global_body + " " + global_response);
+		res.status(503).send('Service unavailable');
 		return;
 	}
 
