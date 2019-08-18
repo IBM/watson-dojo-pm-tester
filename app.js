@@ -37,7 +37,7 @@ var port = (process.env.PORT || 3000);
 // VCAP_SERVICES contains all the credentials of services bound to
 // this application. For details of its content, please refer to
 // the document or sample of each service.
-var env = { baseURL: '', apikey: '' };
+var env = { baseURL: '', apikey: '', instance_id: '' };
 var token = null;
 var scoringHref = null;
 var services = JSON.parse(process.env.VCAP_SERVICES || "{}");
@@ -60,7 +60,7 @@ var credentials = service.credentials;
 */
 
 
-if (credentials != null) {
+if (credentials !== null) {
 	// use env.baseURL for calling WML APIs only. Do not use it for IAM auth. Use (https://iam.cloud.ibm.com) for IAM auth instead.
 	env.baseURL = credentials.url;
 	env.apikey = credentials.apikey;
@@ -77,7 +77,8 @@ if (credentials != null) {
 			console.log('Error from GET to retrieve token ' + err);
 			return;
 		}
-		token = JSON.parse(body)['access_token'];
+		token = JSON.parse(body).access_token;
+		console.log('Got an IAM token');
 		var opts = {
 			url: env.baseURL + '/v3/wml_instances/' + env.instance_id + '/deployments',
 			method: 'GET',
@@ -85,7 +86,7 @@ if (credentials != null) {
 				Authorization: 'Bearer ' + token
 			},
 			json: true
-		}
+		};
 		request(opts, function(err, res, body) {
 			if (err) {
 				console.log('Error from GET to retrieve scoring href ' + err);
