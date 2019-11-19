@@ -91,9 +91,9 @@ var	ResultsCtrl = ['$scope',	'$modalInstance',	'rspHeader', 'rspData', function 
 
    // Format confidence
     if (rspData.values[0][17] == 1)  // CONFIDENCE
-       confidence = (rspData.values[0][16][1] * 100).toFixed(2) + '%';
+       confidence = (rspData.values[0][15][1] * 100).toFixed(2) + '%';
     else
-	   confidence = (rspData.values[0][16][0] * 100).toFixed(2) + '%';
+	   confidence = (rspData.values[0][15][0] * 100).toFixed(2) + '%';
 
 	formattedData.push(confidence);
 
