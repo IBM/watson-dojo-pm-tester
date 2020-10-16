@@ -49,7 +49,7 @@ And it's result
 * An [IBM Cloud Account](https://cloud.ibm.com)
 * An account on [IBM Watson Studio](https://dataplatform.cloud.ibm.com/).
 
-> **NOTE**: As of 12/14/2018, the Watson Machine Learning service on IBM Cloud is only available in the Dallas, London, Frankfurt, or Tokyo regions.
+> **NOTE**: As of 10/16/2020, the Watson Machine Learning service on IBM Cloud is only available in the Dallas, London, Frankfurt, or Tokyo regions. Not the Seoul, Frankfurt, or Sydney regions.
 
 ## Steps
 
